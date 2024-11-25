@@ -44,6 +44,7 @@ public class EmailService {
     for (OrderDetails orderDetail : order.getItems()) {
       Map<String, Object> itemMap = new HashMap<>();
       itemMap.put("productName", orderDetail.getProduct().getProductName());
+    
       itemMap.put("quantity", orderDetail.getQuantity());
       itemMap.put("price", orderDetail.getPriceAtOrder());
       itemMap.put(
