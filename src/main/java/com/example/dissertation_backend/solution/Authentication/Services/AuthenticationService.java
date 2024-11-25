@@ -226,6 +226,7 @@ public class AuthenticationService {
     String subject = "Craft Collaboration Registration Confirmation";
     String confirmationUrl = "/api/email/verify?token=" + token;
     String message = "Please click the link to verify your account: ";
+    String confirmationUrlWithBaseUrl = "https://dissertation-project-backend-b9bee012d5f1.herokuapp.com";
 
     SimpleMailMessage email = new SimpleMailMessage();
     email.setTo(recipientAddress);
