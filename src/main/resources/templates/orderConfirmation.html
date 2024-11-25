@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.email-container {
+				font-family: Arial, sans-serif;
+			}
+			.header {
+				background-color: #f4f4f4;
+				padding: 10px;
+				text-align: center;
+			}
+			.order-summary {
+				margin: 20px 0;
+			}
+			.order-details {
+				background-color: #e8e8e8;
+				padding: 15px;
+			}
+			.footer {
+				font-size: 12px;
+				text-align: center;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="email-container">
+			<div class="header">
+				<h1>Order Confirmation</h1>
+			</div>
+
+			<p>
+				Thank you for your order! We've received your order and will start
+				processing it soon. Your details are below:
+			</p>
+
+			<div class="order-summary">
+				<p>
+					<strong>Order Number: #</strong>
+					<span th:text="${order.id}">Order ID</span>
+				</p>
+				<p>
+					<strong>Estimated Delivery Date:</strong>
+					<span th:text="${deliveryDate}">Delivery Date</span>
+				</p>
+				<p>
+					<strong>Total Price:</strong> £<span th:text="${order.totalPrice}"
+						>Total Price</span
+					>
+				</p>
+			</div>
+
+			<!-- Repeat this block for each item in the order -->
+			<div th:each="item : ${items}">
+				<img th:src="${item.imageUrl}" alt="Product image" height="100px" />
+				<p>
+					<strong>Product:</strong> <span th:text="${item.productName}"></span>
+				</p>
+				<p>
+					<strong>Quantity:</strong> <span th:text="${item.quantity}"></span>
+				</p>
+				<p><strong>Price:</strong> £<span th:text="${item.price}"></span></p>
+			</div>
+
+			<!-- End of item block -->
+
+			<div class="footer">
+				<p>If you have any questions, contact us at support@example.com.</p>
+			</div>
+		</div>
+	</body>
+</html>
