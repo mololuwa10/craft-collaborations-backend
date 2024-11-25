@@ -230,7 +230,8 @@ public class AuthenticationService {
     SimpleMailMessage email = new SimpleMailMessage();
     email.setTo(recipientAddress);
     email.setSubject(subject);
-    email.setText(message + "http://localhost:8080" + confirmationUrl);
+
+    email.setText(message + "https://dissertation-project-backend-b9bee012d5f1.herokuapp.com" + confirmationUrl);
     mailSender.send(email);
   }
 
