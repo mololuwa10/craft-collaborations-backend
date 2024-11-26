@@ -1,5 +1,7 @@
 package com.example.dissertation_backend.solution.Configuration;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
@@ -25,7 +27,11 @@ public class MailConfig {
         // dotenv.get("MAIL_PASSWORD")));
 
         Dotenv dotenv = null;
-        if (System.getenv("HEROKU") == null) {
+        // if (System.getenv("HEROKU") == null) {
+        // dotenv = Dotenv.load(); // Load .env file in local development
+        // }
+
+        if (Files.exists(Paths.get(".env"))) {
             dotenv = Dotenv.load(); // Load .env file in local development
         }
 

@@ -7,6 +7,8 @@ import com.example.dissertation_backend.solution.Customers.Repository.UserReposi
 
 import io.github.cdimascio.dotenv.Dotenv;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,7 +44,11 @@ public class SolutionApplication {
 
     // Load environment variables based on the environment
     Dotenv dotenv = null;
-    if (System.getenv("HEROKU") == null) {
+    // if (System.getenv("HEROKU") == null) {
+    // dotenv = Dotenv.load(); // Load .env file in local development
+    // }
+
+    if (Files.exists(Paths.get(".env"))) {
       dotenv = Dotenv.load(); // Load .env file in local development
     }
 
