@@ -17,19 +17,8 @@ public class MailConfig {
     public JavaMailSender javaMailSender() {
         // Dotenv dotenv = Dotenv.load();
         // JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        // Set the properties for the mail sender
-        // mailSender.setHost(System.setProperty("MAIL_HOST", dotenv.get("MAIL_HOST")));
-        // mailSender.setPort(Integer.parseInt(System.setProperty("MAIL_PORT",
-        // dotenv.get("MAIL_PORT"))));
-        // mailSender.setUsername(System.setProperty("MAIL_USERNAME",
-        // dotenv.get("MAIL_USERNAME")));
-        // mailSender.setPassword(System.setProperty("MAIL_PASSWORD",
-        // dotenv.get("MAIL_PASSWORD")));
 
         Dotenv dotenv = null;
-        // if (System.getenv("HEROKU") == null) {
-        // dotenv = Dotenv.load(); // Load .env file in local development
-        // }
 
         if (Files.exists(Paths.get(".env"))) {
             dotenv = Dotenv.load(); // Load .env file in local development
