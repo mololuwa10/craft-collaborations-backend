@@ -54,7 +54,7 @@ public class ShoppingCartService {
     Optional<ShoppingCart> existingCart = shoppingCartRepository.findByUser(
       user
     );
-    if (!existingCart.isPresent()) {
+    if (existingCart.isEmpty()) {
       try {
         ShoppingCart newCart = new ShoppingCart();
         newCart.setUser(user);

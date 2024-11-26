@@ -139,7 +139,7 @@ public class TestimonialController {
       return null;
     }
     Optional<Testimonial> existingTestimonialOpt = testimonialRepo.findById(id);
-    if (!existingTestimonialOpt.isPresent()) {
+    if (existingTestimonialOpt.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
@@ -177,7 +177,7 @@ public class TestimonialController {
     }
 
     Optional<Testimonial> testimonialOpt = testimonialRepo.findById(id);
-    if (!testimonialOpt.isPresent()) {
+    if (testimonialOpt.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 

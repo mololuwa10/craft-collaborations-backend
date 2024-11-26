@@ -124,7 +124,7 @@ public class AdminController {
     }
 
     Optional<Testimonial> testimonialOpt = testimonialRepo.findById(id);
-    if (!testimonialOpt.isPresent()) {
+    if (testimonialOpt.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 

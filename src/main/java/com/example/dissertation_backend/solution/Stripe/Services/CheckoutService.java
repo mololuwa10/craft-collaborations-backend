@@ -95,7 +95,7 @@ public class CheckoutService {
     }
 
     double roundedTotalPrice = Double.parseDouble(
-      String.format("%.2f", totalPrice)
+            "%.2f".formatted(totalPrice)
     );
 
     order.setTotalPrice(roundedTotalPrice); // Set the total price of the order

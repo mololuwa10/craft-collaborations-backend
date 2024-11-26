@@ -73,7 +73,7 @@ public class UserService implements UserDetailsService {
       );
     }
     Optional<ApplicationUser> userOptional = userRepository.findById(userId);
-    if (!userOptional.isPresent()) {
+    if (userOptional.isEmpty()) {
       throw new RuntimeException("User not found.");
     }
 
@@ -137,7 +137,7 @@ public class UserService implements UserDetailsService {
       );
     }
     Optional<ApplicationUser> userOptional = userRepository.findById(userId);
-    if (!userOptional.isPresent()) {
+    if (userOptional.isEmpty()) {
       throw new RuntimeException("User not found.");
     }
 

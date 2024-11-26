@@ -6,7 +6,8 @@ import com.example.dissertation_backend.solution.Customers.Repository.UserReposi
 import com.example.dissertation_backend.solution.Customers.Service.ArtisanProfileService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,15 +63,12 @@ public class ArtisanProfileController {
   @PutMapping
   public ResponseEntity<ArtisanProfile> updateArtisanProfile(
     @RequestParam(
-      value = "profilePicture",
       required = false
     ) MultipartFile profilePicture,
     @RequestParam(
-      value = "storeBanner",
       required = false
     ) MultipartFile storeBanner,
     @RequestParam(
-      value = "galleryImages",
       required = false
     ) List<MultipartFile> galleryImages,
     @RequestParam("artisanProfile") String artisanProfileStr,
@@ -129,7 +127,7 @@ public class ArtisanProfileController {
 
   private String storeImage(MultipartFile image) throws IOException {
     if (image != null && !image.isEmpty()) {
-      Path uploadDir = Paths.get("uploads");
+      Path uploadDir = Path.of("uploads");
 
       // If the directory doesn't exist, create it
       if (!Files.exists(uploadDir)) {

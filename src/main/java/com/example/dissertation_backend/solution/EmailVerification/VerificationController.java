@@ -21,7 +21,7 @@ public class VerificationController {
   private UserRepository userRepository;
 
   @GetMapping("/verify")
-  public ResponseEntity<?> verifyAccount(@RequestParam("token") String token) {
+  public ResponseEntity<?> verifyAccount(@RequestParam String token) {
     VerificationToken verificationToken = verificationTokenRepository
       .findByToken(token)
       .orElseThrow(() -> new RuntimeException("Invalid token"));

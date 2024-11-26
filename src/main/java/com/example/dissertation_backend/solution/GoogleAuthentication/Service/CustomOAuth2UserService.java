@@ -48,8 +48,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     throws OAuth2AuthenticationException {
     OAuth2User oauth2User = super.loadUser(userRequest);
     logger.debug("OAuth2User loaded: {}", oauth2User.getAttributes());
-    if (userRequest instanceof OidcUserRequest) {
-      OidcUserRequest oidcUserRequest = (OidcUserRequest) userRequest;
+    if (userRequest instanceof OidcUserRequest oidcUserRequest) {
       OidcIdToken idToken = oidcUserRequest.getIdToken();
       ApplicationUser user = (ApplicationUser) processOAuth2User(
         oauth2User,

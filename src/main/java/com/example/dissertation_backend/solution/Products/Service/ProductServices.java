@@ -47,6 +47,7 @@ public class ProductServices {
     Integer minRating,
     Pageable pageable
   ) {
+    @SuppressWarnings("null")
     Specification<Products> spec = (root, query, criteriaBuilder) -> {
       List<Predicate> predicates = new ArrayList<>();
 
@@ -218,7 +219,7 @@ public class ProductServices {
     }
 
     Optional<Category> categoryOpt = categoryRepository.findById(categoryId);
-    if (!categoryOpt.isPresent()) {
+    if (categoryOpt.isEmpty()) {
       return new ArrayList<>();
     }
 

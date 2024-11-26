@@ -10,7 +10,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
 import net.coobird.thumbnailator.Thumbnails;
@@ -100,7 +99,7 @@ public class ProductImageController {
       byte[] resizedImage = resizeImage(file.getBytes(), 100, 100);
       String fileExtension = getFileExtension(file.getOriginalFilename());
       String fileName = UUID.randomUUID().toString() + "." + fileExtension;
-      Path destinationFilePath = Paths.get("/uploads/", fileName);
+      Path destinationFilePath = Path.of("/uploads/", fileName);
 
       try (
         FileOutputStream fos = new FileOutputStream(

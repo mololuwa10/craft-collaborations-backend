@@ -5,7 +5,8 @@ import com.example.dissertation_backend.solution.Category.Repository.CategoryRep
 import com.example.dissertation_backend.solution.Category.Service.CategoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -77,7 +78,7 @@ public class CategoryController {
 
   @PostMapping
   public ResponseEntity<Object> addCategory(
-    @RequestParam("image") MultipartFile image,
+    @RequestParam MultipartFile image,
     @RequestParam("category") String categoryStr
   ) {
     try {
@@ -107,8 +108,8 @@ public class CategoryController {
 
   @PostMapping("/{parentId}/subcategories")
   public ResponseEntity<Object> addSubCategory(
-    @PathVariable(value = "parentId") Integer parentId,
-    @RequestParam("image") MultipartFile image,
+    @PathVariable Integer parentId,
+    @RequestParam MultipartFile image,
     @RequestParam("subCategory") String categoryStr
   ) {
     try {
@@ -126,7 +127,7 @@ public class CategoryController {
       Optional<Category> parentCategoryOpt = categoryRepository.findById(
         parentId
       );
-      if (!parentCategoryOpt.isPresent()) {
+      if (parentCategoryOpt.isEmpty()) {
         return ResponseEntity
           .status(HttpStatus.NOT_FOUND)
           .body("Parent category not found");
@@ -161,7 +162,7 @@ public class CategoryController {
   @PutMapping("/{id}")
   public ResponseEntity<Object> updateCategory(
     @PathVariable(value = "id") Integer categoryId,
-    @RequestParam(value = "image", required = false) MultipartFile image,
+    @RequestParam(required = false) MultipartFile image,
     @RequestParam("category") String categoryStr
   ) {
     try {
@@ -220,7 +221,7 @@ public class CategoryController {
 
   private String storeImage(MultipartFile image) throws IOException {
     if (image != null && !image.isEmpty()) {
-      Path uploadDir = Paths.get("uploads");
+      Path uploadDir = Path.of("uploads");
 
       // If the directory doesn't exist, create it
       if (!Files.exists(uploadDir)) {

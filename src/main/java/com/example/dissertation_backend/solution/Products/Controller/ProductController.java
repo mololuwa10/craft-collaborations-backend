@@ -19,7 +19,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -192,7 +191,7 @@ public class ProductController {
       for (MultipartFile file : files) {
         byte[] resizedImage = file.getBytes();
         String directoryName = "uploads";
-        Path uploadDirPath = Paths.get(directoryName).toAbsolutePath();
+        Path uploadDirPath = Path.of(directoryName).toAbsolutePath();
         Files.createDirectories(uploadDirPath);
 
         String originalFilename = file.getOriginalFilename();
@@ -243,7 +242,7 @@ public class ProductController {
       user
     );
     if (
-      !artisanProfileOpt.isPresent() ||
+      artisanProfileOpt.isEmpty() ||
       !product.getArtisan().getArtisan().equals(user)
     ) {
       return ResponseEntity
@@ -260,7 +259,7 @@ public class ProductController {
         String directoryName = "uploads";
 
         // Ensure directory exists or create it
-        Path uploadDirPath = Paths.get(directoryName).toAbsolutePath();
+        Path uploadDirPath = Path.of(directoryName).toAbsolutePath();
         Files.createDirectories(uploadDirPath);
 
         // Extract file extension

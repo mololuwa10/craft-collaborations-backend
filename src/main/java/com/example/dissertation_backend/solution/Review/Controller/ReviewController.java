@@ -111,7 +111,7 @@ public class ReviewController {
 
     // Verify that the product exists
     Optional<Products> productOpt = productServices.getProductById(productId);
-    if (!productOpt.isPresent()) {
+    if (productOpt.isEmpty()) {
       return ResponseEntity
         .status(HttpStatus.NOT_FOUND)
         .body("Product not found.");
@@ -172,7 +172,7 @@ public class ReviewController {
     Optional<ArtisanProfile> artisanProfile = artisanProfileService.getArtisanProfileById(
       artisanId
     );
-    if (!artisanProfile.isPresent()) {
+    if (artisanProfile.isEmpty()) {
       return ResponseEntity
         .status(HttpStatus.NOT_FOUND)
         .body("Artisan not found.");
@@ -203,7 +203,7 @@ public class ReviewController {
     }
 
     Optional<Review> reviewOpt = reviewRepository.findById(reviewId);
-    if (!reviewOpt.isPresent()) {
+    if (reviewOpt.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
@@ -258,7 +258,7 @@ public class ReviewController {
     }
 
     Optional<Review> reviewOpt = reviewRepository.findById(reviewId);
-    if (!reviewOpt.isPresent()) {
+    if (reviewOpt.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
