@@ -36,6 +36,7 @@ public class SolutionApplication {
     System.setProperty("STRIPE_SECRET_KEY", dotenv.get("STRIPE_SECRET_KEY"));
     System.setProperty("MAIL_USERNAME", dotenv.get("MAIL_USERNAME"));
     System.setProperty("MAIL_PASSWORD", dotenv.get("MAIL_PASSWORD"));
+    s
 
     SpringApplication.run(SolutionApplication.class, args);
   }
