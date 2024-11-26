@@ -25,7 +25,7 @@ public class SolutionApplication {
     // Load environment variables from the .env file
     Dotenv dotenv = Dotenv.load();
 
-    // Optionally, you can manually set them as System properties if needed
+    // Set system properties for the environment variables
     System.setProperty("DB_URL", dotenv.get("DB_URL"));
     System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
     System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
@@ -36,7 +36,8 @@ public class SolutionApplication {
     System.setProperty("STRIPE_SECRET_KEY", dotenv.get("STRIPE_SECRET_KEY"));
     System.setProperty("MAIL_USERNAME", dotenv.get("MAIL_USERNAME"));
     System.setProperty("MAIL_PASSWORD", dotenv.get("MAIL_PASSWORD"));
-    s
+    System.setProperty("MAIL_HOST", dotenv.get("MAIL_HOST"));
+    System.setProperty("MAIL_PORT", dotenv.get("MAIL_PORT"));
 
     SpringApplication.run(SolutionApplication.class, args);
   }
