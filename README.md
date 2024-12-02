@@ -15,7 +15,7 @@ This repository contains the backend code for the Craft Collaborations Web App, 
 - Backend: Spring Boot (Java)
 - Database: MySQL
 
-#🚦 Running the Project
+# 🚦 Running the Project
 To run the project
 - Clone the repository
 - Java 17, VsCode and MySQL needs to be installed
